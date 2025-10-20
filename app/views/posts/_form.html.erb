@@ -1,0 +1,99 @@
+<%= form_with(model: post, local: true) do |form| %>
+
+  <div
+    class="cf-turnstile"
+    data-sitekey="0x4AAAAAAA4C6pMs_5bgX07P"
+    data-callback="javascriptCallback"
+  ></div>
+
+  <!-- Event Name Field -->
+  <div class="form-group">
+    <%= form.label :event_name, class: "form-label" %>
+    <%= form.text_field :event_name, class: "form-input" %>
+    <% if post.errors.include?(:event_name) %>
+      <p class="error-message">
+        <%= post.errors.full_messages_for(:event_name).join(", ") %>
+      </p>
+    <% end %>
+  </div>
+
+  <!-- Time Field -->
+  <div class="form-group">
+    <%= form.label :time, class: "form-label" %>
+    <%= form.time_field :time, class: "form-input" %>
+  </div>
+
+  <!-- Event Date Field -->
+  <div class="form-group">
+    <%= form.label :event_date, class: "form-label" %>
+    <%= form.date_field :event_date, class: "form-input" %>
+  </div>
+
+  <!-- Membership Required Checkbox -->
+  <div class="form-group">
+    <%= form.label :membership_required, class: "form-label" %>
+    <%= form.check_box :membership_required, class: "form-checkbox", checked: @post.membership_required.nil? || @post.membership_required == "1" %>
+  </div>
+
+  <!-- Visibility Checkbox -->
+  <div class="form-group">
+    <%= form.label :visibility, "Visible?", class: "form-label" %>
+    <%= form.check_box :visibility, class: "form-checkbox" %>
+  </div>
+
+  <!-- Suggested Donation Field -->
+  <div class="form-group">
+    <%= form.label :suggested_donation, class: "form-label" %>
+    <%= form.text_field :suggested_donation, class: "form-input" %>
+  </div>
+
+  <!-- Genres Multi-Select Field with Slim Select -->
+  <div class="form-group">
+    <%= form.label :genres, "Genres", class: "form-label" %>
+    <%= form.select :genre_ids, options_for_select(@genres.collect { |genre| [genre.name, genre.id] }, selected: @post.genre_ids), { multiple: true }, { class: "form-select", id: "genre_select" } %>
+  </div>
+
+  <!-- Bands Multi-Select Field with Slim Select -->
+  <div class="form-group">
+    <%= form.label :bands, "Bands", class: "form-label" %>
+    <%= form.select :band_ids, options_for_select(@bands.collect { |band| [band.band_name, band.id] }, selected: post.band_ids), { multiple: true }, { class: "form-select", id: "band_select" } %>
+  </div>
+
+  <!-- Image Upload Field -->
+  <div class="form-group">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-input" %>
+  </div>
+
+  <!-- Show Poster Upload Field -->
+  <div class="form-group">
+    <%= form.label :show_poster, "Upload Show Poster", class: "form-label" %>
+    <%= form.file_field :show_poster, class: "form-input" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="form-group">
+    <%= form.submit "Submit", class: "form-submit" %>
+  </div>
+
+<% end %>
+
+<!-- Include Slim Select JavaScript and Initialization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Slim Select for Bands
+    new SlimSelect({
+      select: '#band_select',
+      closeOnSelect: false // Allows multiple selection
+    });
+
+    // Initialize Slim Select for Genres
+    new SlimSelect({
+      select: '#genre_select', // Ensure this matches the ID of the genre select element
+      closeOnSelect: false // Allows multiple selection
+    });
+  });
+</script>

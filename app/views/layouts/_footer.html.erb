@@ -1,0 +1,36 @@
+<!-- app/views/layouts/_footer.html.erb -->
+<%= javascript_importmap_tags %>
+
+<footer class="footer-container">
+  <div class="description">
+    Seventh Circle Music Collective: All-ages DIY venue in Denver, fostering accessibility to the arts.
+  </div>
+
+  <div class="nav-links-custom">
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link-custom" %>
+      <span class="separator">|</span>
+      <%= link_to "Edit Account", edit_user_registration_path, class: "nav-link-custom" %>
+      <span class="separator">|</span>
+      <%= link_to "Bands", bands_path, class: "nav-link-custom" %>
+      <span class="separator">|</span>
+      <%= link_to "Genres", genres_path, class: "nav-link-custom" %>
+
+      <% if current_user.admin? %>
+        <span class="separator">|</span>
+        <%= link_to "User List", userist_path, class: "nav-link-custom" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Signin", new_user_session_path, class: "nav-link-custom" %>
+    <% end %>
+  </div>
+
+  <div class="social-icons-custom">
+    <a href="https://discord.gg/8Ev6rBqfTA" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a href="https://www.youtube.com/@seventhcircle4608" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.instagram.com/scmc_denver_diy/?hl=en" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/SCMCDenverDIY/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.patreon.com/7cmc/posts" target="_blank" aria-label="Patreon"><i class="fab fa-patreon"></i></a>
+    <a href="https://twitter.com/scmc_denver_diy?lang=en" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+  </div>
+</footer>

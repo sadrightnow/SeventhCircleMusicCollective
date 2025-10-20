@@ -1,0 +1,56 @@
+
+
+.footer-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #231F20;
+  font-family: Arial, sans-serif;
+  border-top: 1px solid #ccc;  /* Add a 1px grey line under the navbar */
+
+}
+
+.footer-container .description {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.nav-links-custom {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link-custom {
+  color: #212529;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: light;
+}
+
+.nav-link-custom:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  color: #231F20;
+}
+
+.social-icons-custom {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon-custom {
+  color: #231F20;
+  font-size: 18px; /* Adjust icon size */
+  transition: color 0.3s ease;
+}
+
+.social-icon-custom:hover {
+  color: #7EBDC2;
+}

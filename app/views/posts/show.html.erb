@@ -1,0 +1,86 @@
+<%= stylesheet_link_tag 'post_show', media: 'all' %>
+<%= stylesheet_link_tag 'band_show', media: 'all' %>
+
+<div class="post-show-container">
+  <!-- Title -->
+  <div class="event-info">
+    <div class="event-title-container">
+      <p class="event-title">
+        <strong>
+          <% @post.event_name.split(',').each_with_index do |name, index| %>
+            <%= name.strip.gsub(' ', '&nbsp;').html_safe %><%= ',' if index < @post.event_name.split(',').size - 1 %>&nbsp;
+          <% end %>
+        </strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Date, Time, Suggested Donation, and Membership -->
+  <div class="event-meta">
+    <p class="event-time">
+      <%= Date.parse(@post.event_date).strftime('%B %d, %Y') %> @ 
+      <%= Time.parse(@post.time.presence || '19:00:00').strftime('%l:%M %p').strip %>
+    </p>
+  </div>
+<div class="event-meta">
+  <p class="event-cost">
+    <%= @post.suggested_donation %> suggested donation
+  </p>
+  <% if @post.membership_required == "1" %>
+    <p class="membership-required">
+      &nbsp;+ ($5 annual membership required)
+    </p>
+  <% end %>
+</div>
+
+
+
+<div class="google-cal-link">
+  <%= link_to "Add to Google Calendar", google_calendar_event_url(@post), target: "_blank", class: "post-action-link" %>
+</div>
+
+
+
+  <!-- Poster -->
+  <div class="poster-container">
+    <% if @post.show_poster.attached? %>
+      <%= image_tag @post.show_poster, class: "show-poster" %>
+    <% else %>
+      <p>No Show Poster Available</p>
+    <% end %>
+  </div>
+
+
+  <!-- Bands -->
+  <div class="event-bands">
+
+    <% if @bands.any? %>
+      <div class="bands-list">
+        <% @bands.each do |band| %>
+          <%= render 'bands/show', band: band %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No bands associated with this event.</p>
+    <% end %>
+  </div>
+
+  <!-- Back Link -->
+  <div class="back-link">
+    <%= link_to "Back to All Posts", posts_path %>
+  </div>
+</div>
+
+<!-- Edit & Destroy Links -->
+<div class="post-actions">
+  <% if user_signed_in? %>
+    <%= link_to "Edit this post", edit_post_path(@post), class: "post-action-link" %>
+    <%= button_to "Destroy this post", @post, method: :delete, class: "post-action-link" %>
+  <% end %>
+</div>
+
+
+

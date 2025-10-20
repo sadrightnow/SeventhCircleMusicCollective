@@ -1,0 +1,41 @@
+/* Genre list styling */
+.genre-list {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  gap: 10px; /* Space between items */
+  margin: 20px auto; /* Center the list horizontally */
+  width: 60%; /* Adjust to make the list closer to the center */
+}
+
+/* Each individual genre item */
+.genre-item {
+  display: flex;
+  justify-content: space-between; /* Space between the columns */
+  align-items: center; /* Align content vertically */
+  padding: 10px 20px; /* Padding for each genre item */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Font size for genre name */
+  background-color: #f9f9f9; /* Light background for each item */
+}
+
+/* Styling for the 'Create New Genre' button */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 20px; /* Space between the button and genre list */
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Delete button styling */
+.delete-btn {
+  color: #d9534f; /* Red color for delete */
+  text-decoration: none;
+}

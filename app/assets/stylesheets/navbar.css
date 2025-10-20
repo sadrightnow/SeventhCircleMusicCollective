@@ -1,0 +1,114 @@
+/* Navbar Styles */
+.navbar {
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Grey border */
+  box-sizing: border-box; /* Include padding and border in width */
+  display: flex;
+  justify-content: center; /* Center the entire navbar */
+  position: relative;
+  width: 100%; /* Full width */
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space out hamburger and links */
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Navbar links */
+.navbar-links {
+  display: flex;
+  justify-content: center; /* Center the links */
+  align-items: center; /* Vertically align links */
+  flex-grow: 1; /* Allow links to take up available space */
+}
+
+.navbar-links ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px; /* Space between links */
+}
+
+.navbar-links ul li a {
+  text-decoration: none;
+  color: #212529; /* Black text */
+  font-weight: 400; /* Normal weight */
+  padding: 10px;
+}
+
+.navbar-links ul li a:hover {
+  color: black; /* Black text on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Hamburger styles for mobile */
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 25px;
+  width: 30px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .navbar-container {
+    justify-content: space-between; /* Space between hamburger and links */
+  }
+
+  .navbar-links {
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align to the left */
+    position: absolute;
+    top: 60px; /* Position below the navbar */
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Dropdown effect */
+    padding: 10px 20px;
+  }
+
+  .navbar-links.active {
+    display: flex; /* Show when active */
+  }
+
+  .hamburger {
+    display: flex; /* Show on mobile */
+  }
+
+  .navbar-links ul {
+    flex-direction: column; /* Stack links vertically */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-links ul li {
+    margin: 10px 0; /* Space between links */
+    width: 100%;
+  }
+
+  .navbar-links ul li a {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+}
+

@@ -1,0 +1,48 @@
+/* Container that holds the logo and background */
+.image-container {
+  position: relative;
+  width: 100vw; /* Full width of the viewport */
+  height: 60vh; /* Adjust the height of the image container to fit your needs */
+  margin: 0 auto; /* Center horizontally */
+  overflow: hidden; /* Crop the background image */
+}
+
+/* Background image that will scroll subtly and be cropped */
+.image-container::before {
+  content: '';
+  position: absolute;
+  top: 0%; /* Start the background in the middle */
+  left: 0;
+  width: 100%;
+  height: 70%; /* Make the background cover the full container */
+  background-image: url('background.jpg');
+  background-position: center center; /* Ensure the background stays centered */
+  background-size: cover; /* Cover the container without distorting the aspect ratio */
+  background-attachment: fixed; /* Keeps the background fixed but allows subtle scroll */
+  z-index: -1;
+  transition: transform 0.3s ease-out; /* Smooth transition effect */
+}
+
+/* Foreground image (the logo) */
+.foreground {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the logo */
+  width: 50%; /* Adjust size of the logo */
+  height: auto;
+  z-index: 1; /* Place logo in front of the background */
+}
+
+/* Add some content that scrolls over the background */
+.content {
+  padding: 20px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+/* Optional: Smooth scroll for the page */
+body {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,100 @@
+<%= form_with(model: band) do |form| %>
+  <% if band.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved:</h2>
+      <ul>
+        <% band.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div
+    class="cf-turnstile"
+    data-sitekey="0x4AAAAAAA4C6pMs_5bgX07P"
+    data-callback="javascriptCallback"
+  ></div>
+  
+  <!-- Band Name -->
+  <div class="form-group">
+    <%= form.label :band_name, class: "form-label" %>
+    <%= form.text_field :band_name, class: "form-input" %>
+  </div>
+
+  <!-- Genres Multi-Select Field with Slim Select -->
+  <div class="form-group">
+    <%= form.label :genres, "Genres", class: "form-label" %>
+    <%= form.select :genre_ids, 
+        options_for_select(@genres.map { |genre| [genre.name, genre.id] }, @band.genre_ids), 
+        { multiple: true }, 
+        { class: "form-select", id: "genre_select" } %>
+  </div>
+
+  <!-- Bandcamp Link -->
+  <div class="form-group">
+    <%= form.label :band_bandcamp_link, class: "form-label" %>
+    <%= form.text_field :band_bandcamp_link, class: "form-input" %>
+  </div>
+
+  <!-- Local Checkbox -->
+  <div class="form-group">
+    <%= form.label :local, "Is the band local?", class: "form-label" %>
+    <%= form.check_box :local, class: "form-checkbox" %>
+  </div>
+
+  <!-- Instagram Link -->
+  <div class="form-group">
+    <%= form.label :band_instagram_link, class: "form-label" %>
+    <%= form.text_field :band_instagram_link, class: "form-input" %>
+  </div>
+
+  <!-- Band Description -->
+  <div class="form-group">
+    <%= form.label :band_description, class: "form-label" %>
+    <%= form.text_area :band_description, class: "form-input", rows: 4, cols: 50 %>
+  </div>
+
+  <!-- Band Location -->
+  <div class="form-group">
+    <%= form.label :band_location, class: "form-label" %>
+    <%= form.text_field :band_location, class: "form-input" %>
+  </div>
+
+  <!-- Band Email -->
+  <div class="form-group">
+    <%= form.label :band_email, class: "form-label" %>
+    <%= form.text_field :band_email, class: "form-input" %>
+  </div>
+
+  <!-- Band FFO -->
+  <div class="form-group">
+    <%= form.label :band_ffo, class: "form-label" %>
+    <%= form.text_field :band_ffo, class: "form-input" %>
+  </div>
+
+  <!-- Profile Picture -->
+  <div class="form-group">
+    <%= form.label :profile_picture, class: "form-label" %>
+    <%= form.file_field :profile_picture, class: "form-input" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <%= form.submit class: "form-submit" %>
+  </div>
+<% end %>
+
+<!-- Include Slim Select JavaScript and Initialization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Slim Select for Genres
+    new SlimSelect({
+      select: '#genre_select', // Make sure this matches the ID used for the genre select
+      closeOnSelect: false // Allows multiple selection
+    });
+  });
+</script>

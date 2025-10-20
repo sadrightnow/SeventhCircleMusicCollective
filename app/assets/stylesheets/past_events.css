@@ -1,0 +1,118 @@
+.past-events-table {
+  display: grid;
+  /* Default grid layout for 3 columns: Number, Date, Event */
+  grid-template-columns: 50px 150px 1fr; 
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  max-width: calc(100% - 40px);
+  box-sizing: border-box;
+}
+
+/* Adjust grid for logged-in users by adding the "Actions" column */
+.past-events-table.logged-in {
+  grid-template-columns: 50px 150px 1fr 100px; /* 4 columns with Actions */
+}
+
+.past-events-header {
+  display: contents;
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+}
+
+.past-events-row {
+  display: contents;
+}
+
+.past-event-column {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+/* Specific styles for each column */
+.past-event-column:nth-child(1) {
+  text-align: center;
+}
+
+.past-event-column:nth-child(2) {
+  text-align: center;
+}
+
+.past-event-column:nth-child(3) {
+  text-align: left;
+}
+
+/* Adjust actions column appearance */
+.past-event-column.actions {
+  width: 100px; /* Fixed width for actions column */
+  text-align: center;
+  padding: 5px;
+}
+
+/* Remove border for last row */
+.past-event-column:last-child {
+  border-bottom: none;
+}
+
+/* Pagination styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 5px 0;
+  width: calc(100% - 40px); /* Account for margins */
+  box-sizing: border-box;
+  gap: 5px;
+  flex-wrap: nowrap; /* Prevent wrapping of buttons */
+  overflow-x: auto;
+}
+
+/* Pagination button styling */
+.pagination .page {
+  display: inline-block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Active page button styling */
+.pagination .page.current {
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+}
+
+/* Hover effect for pagination links */
+.pagination .page:hover {
+  background-color: #e0e0e0;
+}
+
+/* Disabled pagination button */
+.pagination .page.disabled {
+  color: #999;
+  pointer-events: none;
+}
+
+/* Delete button styling */
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Hover effect for delete button */
+.delete-button:hover {
+  background-color: #ff1a1a;
+}
+
+

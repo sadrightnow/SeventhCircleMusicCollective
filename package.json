@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "bootstrap": "^5.3.3",
+    "slim-select": "^2.9.2",
+    "@hotwired/stimulus-loading": "^1.0.0"
+  },
+  "packageManager": "yarn@1.22.22"
+}

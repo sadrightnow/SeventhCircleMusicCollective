@@ -1,0 +1,58 @@
+<div id="<%= dom_id post %>" class="post-container">
+
+  <%= link_to "", post, class: "post-link" %> <!-- Ensure this link spans the container -->
+
+  <div class="post-image-container">
+    <% if post.image.attached? %>
+      <%= image_tag(post.image, class: "post-image") %> <!-- Use the first attached image -->
+    <% else %>
+      <div class="placeholder">No Image Available</div>
+    <% end %>
+  </div>
+
+<p class="event-title">
+  <strong>
+    <% post.event_name.split(',').each_with_index do |name, index| %>
+      <%= name.strip %><%= ',' if index < post.event_name.split(',').size - 1 %>&nbsp;
+    <% end %>
+  </strong>
+</p>
+
+
+  <p style="text-align: center; font-size: 14px; color:  grey;">
+    <% post.genres.each do |genre| %>
+      <%= genre.name %>
+      <% if genre != post.genres.last %>, <% end %>
+    <% end %>
+  </p>
+
+  <div class="date-overlay">
+    <span class="day"><%= Date.parse(post.event_date).strftime('%a') %></span>
+    <span class="date"><%= Date.parse(post.event_date).strftime('%d') %></span>
+    <span class="month"><%= Date.parse(post.event_date).strftime('%b') %></span>
+  </div>
+
+  <div class="post-footer">
+    <p class="time">
+      <%= Time.parse(post.time.presence || '19:00:00').strftime('%l:%M %p').strip %>
+    </p>
+    <p class="suggested-donation">
+      <strong></strong> <%= post.suggested_donation %>
+      <% if post.membership_required == "1" %>
+         + ($5 membership)
+      <% end %>
+    </p>
+  </div>
+
+
+
+  <% unless post.visibility %>
+    <p class="visibility-status" style="color: red; text-align: center; font-size: 12px;">
+      <strong>Not Visible</strong>
+    </p>
+  <% end %>
+
+
+  
+
+</div>

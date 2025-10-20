@@ -1,0 +1,164 @@
+/* Container for the entire post show page */
+.post-show-container {
+  max-width: 800px;         /* Set a max width for better control */
+  margin: 0 auto;           /* Center the container */
+  padding: 20px;            /* Add padding inside the container */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;                /* Add space between sections */
+}
+
+/* Title */
+.event-info {
+  text-align: center;       /* Center-align the title */
+}
+
+.event-title-container {
+  width: 100%;
+  max-width: 600px;         /* Match the width with the poster */
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;           /* Center the title */
+}
+
+.event-title {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin: 0;
+  word-wrap: break-word;    /* Prevent overflow */
+  line-height: 1.2;
+  text-transform: capitalize; /* Optional: Capitalize each word */
+}
+
+/* Event Meta Information (Date, Time, Donation) */
+.event-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;                /* Add space between the date and cost */
+  color: grey;
+}
+
+.event-meta p {
+  margin: 0;
+}
+
+.event-time {
+  white-space: nowrap;      /* Prevent date and time from wrapping */
+}
+
+.event-cost, .membership-required {
+  font-size: 14px;
+  color: grey;
+}
+
+/* Poster Section */
+.poster-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.show-poster {
+  max-width: 600px;         /* Limit poster width */
+  width: 100%;              /* Allow poster to scale responsively */
+  height: auto;             /* Maintain aspect ratio */
+  object-fit: contain;      /* Ensure the poster fits nicely */
+}
+
+/* Bands Section */
+.event-bands {
+  text-align: center;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.event-bands .bands-list {
+  display: flex;
+  flex-direction: column; /* Ensure bands display vertically by default */
+  justify-content: center;
+  gap: 5px; /* Add space between bands */
+}
+
+.event-bands p {
+  margin: 10px 0; /* Space between band name and text */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .event-bands .bands-list {
+    flex-direction: column; /* Make sure it's still column on small screens */
+  }
+}
+
+
+/* Back Link */
+.back-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Post Actions (Edit and Destroy Links) */
+.post-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Post Actions (Edit and Destroy Links) */
+.google-cal-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px; 
+}
+
+
+.post-action-link {
+  color: #007bff;           /* Link color */
+  text-decoration: none;    /* Remove underline */
+  font-size: 1.2em;         /* Increase font size for links */
+}
+
+.post-action-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.post-actions a + a {
+  margin-left: 15px;        /* Add space between edit and destroy links */
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .post-show-container {
+    padding: 10px;         /* Reduce padding on mobile */
+    margin-left: 10px;     /* Add a small margin on the left */
+    margin-right: 10px;    /* Add a small margin on the right */
+  }
+
+  .event-title {
+    font-size: 2em;        /* Make title font smaller for mobile */
+  }
+
+  .event-meta {
+    flex-direction: column; /* Stack meta information on mobile */
+    text-align: center;
+  }
+
+  .poster-container {
+    margin: 15px 0;        /* Adjust margins for poster */
+  }
+
+  .show-poster {
+    max-width: 100%;  
+
+  .post-creator {
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+  /* google calendar stuff */
+
+  
+

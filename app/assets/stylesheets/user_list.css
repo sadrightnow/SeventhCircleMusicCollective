@@ -1,0 +1,110 @@
+/* userist.css */
+
+/* Container for the entire user list */
+.user-list-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 10px; /* Reduced padding for a smaller container height */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* Title for the user list section */
+.user-list-title {
+  text-align: center;
+  margin-bottom: 10px; /* Reduced margin for a more compact title */
+  font-family: Arial, sans-serif;
+  font-size: 20px; /* Slightly smaller font size */
+  color: #000;
+}
+
+/* Table styling for the user list */
+.user-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px; /* Reduced margin at the bottom of the table */
+}
+
+.user-list-table th,
+.user-list-table td {
+  padding: 6px 10px; /* Reduced padding for smaller height */
+  text-align: left;
+  border: 1px solid #ccc;
+  font-size: 14px; /* Reduced font size for smaller height */
+}
+
+.user-list-table th {
+  font-weight: bold;
+}
+
+/* Action buttons for user list actions */
+.user-list-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.user-list-actions button {
+  padding: 4px 8px; /* Reduced padding for smaller buttons */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px; /* Adjusted font size for smaller buttons */
+}
+
+.user-list-actions button:hover {
+  background-color: #f5f5f5;
+}
+
+/* Delete button specific styling */
+.user-list-actions .delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+}
+
+.user-list-actions .delete-button:hover {
+  background-color: #c0392b;
+}
+
+/* Form styling for inviting a user */
+.invite-user-form {
+  margin-top: 20px; /* Reduced top margin for a more compact form */
+}
+
+.invite-user-form div {
+  margin-bottom: 8px; /* Reduced bottom margin for form fields */
+}
+
+.invite-user-form label {
+  font-weight: bold;
+  font-size: 14px; /* Reduced font size for labels */
+}
+
+.invite-user-form input[type="email"] {
+  width: 100%;
+  padding: 6px; /* Reduced padding for smaller input field height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px; /* Adjusted font size for smaller inputs */
+}
+
+.invite-user-form input[type="submit"] {
+  padding: 8px 16px; /* Reduced padding for smaller button height */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px; /* Adjusted font size for smaller button */
+}
+
+.invite-user-form input[type="submit"]:hover {
+  background-color: #f5f5f5;
+}
+
+/* Adding margins to the sides of the screen for the container */
+body {
+  margin-left: 20px;
+  margin-right: 20px;
+}

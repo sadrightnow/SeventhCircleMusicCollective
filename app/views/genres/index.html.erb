@@ -1,0 +1,13 @@
+<h1>Genres</h1>
+
+<%= link_to 'Create New Genre', new_genre_path, class: 'btn' %>
+
+<div class="genre-list">
+  <% @genres.each_with_index do |genre, index| %>
+    <div class="genre-item">
+      <span class="genre-number"><%= index + 1 %></span>
+      <span class="genre-name"><%= genre.name %></span>
+      <%= link_to 'Delete', genre_path(genre), method: :delete, class: 'delete-btn', data: { confirm: 'Are you sure you want to delete this genre?' } %>
+    </div>
+  <% end %>
+</div>

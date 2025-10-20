@@ -1,0 +1,225 @@
+body {
+  background-color: #ffffff;
+  color: #ffffff; /* Optional: Adjust text color for readability */
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.top-page-image {
+  display: block; /* Makes the image behave like a block element */
+  margin: 50px auto; /* Adds 50px margin on top/bottom and centers horizontally */
+  max-width: 1200px; /* Ensures the image width aligns with other elements */
+  width: 100%; /* Full width within the parent container */
+  min-height: 400px; /* Sets a minimum height */
+  height: auto; /* Maintains aspect ratio */
+  justify-content: flex-start;
+  border-radius: 0; /* Optional: No rounded corners */
+  box-sizing: border-box; /* Includes padding and borders in width calculation */
+  object-fit: cover; /* Ensures the image covers the minimum height without distortion */
+}
+
+
+
+/* General layout container to align the main-header and posts-grid */
+.container {
+  max-width: 1200px; /* Set a max width for consistency */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 0 50px; /* Add some padding for smaller screens */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Main header styling */
+.main-header h1 {
+  font-size: clamp(30px, 5vw, 50px); /* Scales with screen size */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  margin: 0px 0; /* Adjust vertical spacing */
+  padding: 0; /* Remove inner padding */
+  color: #231F20; /* Desired text color */
+}
+
+
+
+
+/* Posts grid with a maximum width for the grid container */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 50px;
+  max-width: 1200px; /* Set a max width for the grid container */
+  margin: 0px auto; /* Center the grid horizontally */
+}
+
+/* Restrict to a maximum of 3 columns on larger screens */
+@media (min-width: 900px) {
+  .posts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Post container */
+.post-container {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 0px;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  height: auto; /* Dynamically adjusts based on content */
+  max-width: 400px; /* Set a maximum width for the post container */
+}
+
+
+.post-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Keeps the image square */
+  background-color: #DCDCDC;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out; /* Smooth zoom transition */
+}
+
+/* Zooms the image on hover */
+.post-container:hover .post-image {
+  transform: scale(1.025); /* Slight zoom */
+}
+
+.post-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  opacity: 0;
+  background-color: #ffffff;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Only affects the overlay opacity */
+.post-container:hover .post-link {
+  opacity: 0.5;
+}
+
+.placeholder {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.event-title {
+  color:   #231F20;
+  text-align: center;
+  font-size: 22px; /* Slightly smaller font size */
+  margin: 10px 0; /* Reduced margin */
+  padding: 0 10px; /* Less padding around the title */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center; /* Centers the buttons */
+  align-items: center; /* Vertically centers the buttons */
+  gap: 50px; /* Adds space between the buttons */
+  padding: 10px; /* Optional: Adjusts spacing inside the container */
+}
+
+
+.post-footer {
+  display: flex;
+  justify-content: space-between; /* Align time and donation */
+  align-items: center;
+  font-size: 14px; /* Slightly smaller text size */
+  color:  #808080;
+  padding: 5px 10px; /* Reduced padding */
+  background-color: #f2f2f2;
+  margin-top: auto; /* Push footer to the bottom of the container */
+  border-top: 1px solid #ddd; /* Adds a light grey line above the footer */
+}
+
+
+.info-bar {
+  display: flex; /* Use flexbox to make the text flexible */
+  justify-content: center; /* Center-align the content horizontally */
+  align-items: center; /* Center-align the content vertically */
+  background-color: #ffffff; /* Light grey background */
+  color: #231F20; /* Dark text color */
+  margin: 50px 50px;
+  padding: 15px; /* Space inside the bar */
+  text-align: center; /* Center-align the text */
+  border: 1px solid #ddd;
+  border-radius: 0px;
+
+
+  font-size: 18px; /* Slightly smaller font size */
+  color: $231F20;
+  font-weight: light; /* Make the text bold */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+
+.visibility-status {
+  font-size: 12px; /* Slightly smaller text size */
+  margin: 5px 0;
+  text-align: center;
+}
+
+.visibility-status span {
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%; /* Ensure the container spans the full width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add consistent padding */
+    box-sizing: border-box; /* Ensure padding is part of the width */
+
+  }
+
+  .top-page-image {
+  display: block; /* Makes the image behave like a block element */
+  margin: 0px; /* Adds 50px margin on top/bottom and centers horizontally */
+  }
+
+  .posts-grid {
+    gap: 10px; /* Adjust space between items */
+    max-width: 100%; /* Match container width */
+    margin: 0 auto; /* Center the grid */
+    padding: 20px; /* Remove extra padding if unnecessary */
+  }
+
+  .post-container {
+    max-width: 100%; /* Make sure the post fits within the grid */
+    margin: 0; /* Remove extra margins */
+    padding: 0; /* Adjust padding for uniformity */
+  }
+
+  .info-bar {
+    margin: 10px auto; /* Center align and add consistent spacing */
+    padding: 10px; /* Adjust padding */
+    max-width: 100%; /* Ensure the info-bar fits within the container */
+  }
+}
+
+

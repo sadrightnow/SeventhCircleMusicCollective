@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag 'band_show', media: 'all' %>
+
+<div class="band-show-container">
+  
+  <!-- Band Image -->
+  <div class="band-image">
+    <% if band.profile_picture.attached? %>
+      <%= image_tag band.profile_picture, class: "profile-image" %>
+    <% else %>
+      <div class="no-image">No Image Available</div>
+    <% end %>
+  </div>
+
+  <!-- Band Info -->
+  <div class="band-info">
+    <!-- Band Name -->
+    <h1 class="band-name"><%= band.band_name %></h1>
+    <h1 class="location"><%= band.band_location %></h1>
+
+
+ 
+      <% band.genres.each do |genre| %>
+        <%= genre.name %>
+        <% if genre != band.genres.last %>/ <% end %> <!-- Add a comma between genres except the last one -->
+      <% end %>
+    </p>
+
+
+  
+    <!-- Band Social Links -->
+  <p>
+    <% if band.band_bandcamp_link.present? %>
+      <span><%= link_to "Music", band.band_bandcamp_link, target: "_blank" %></span>
+    <% end %>
+    <% if band.band_instagram_link.present? %>
+      <% if band.band_bandcamp_link.present? %> | <% end %>
+      <span><%= link_to "Instagram", band.band_instagram_link, target: "_blank" %></span>
+    <% end %>
+  </p>
+
+    <!-- Band Email and Location -->
+
+  </div>
+
+  <!-- Edit Link for Band (Only visible if the user is logged in) -->
+    <% if user_signed_in? %>
+      <%= link_to 'Edit Band', edit_band_path(band), class: 'edit-band-link' %>
+      
+    <% end %>
+    
+</div>

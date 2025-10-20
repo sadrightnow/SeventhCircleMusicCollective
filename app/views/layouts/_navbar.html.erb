@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Navbar Links -->
+    <div class="navbar-links">
+      <ul>
+        <li><a href="/posts/">Shows</a></li>
+        <li><a href="/home/about">About</a></li>
+        <li><a href="/home/contact">Contact</a></li>
+        <li><a href="/home/visit">Visit</a></li>
+      </ul>
+    </div>
+    
+    <!-- Hamburger Icon for Mobile -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navbarLinks = document.querySelector('.navbar-links');
+
+    if (hamburger && navbarLinks) {
+      hamburger.addEventListener('click', function() {
+        navbarLinks.classList.toggle('active');
+      });
+    }
+  });
+</script>

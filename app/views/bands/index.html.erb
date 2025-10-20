@@ -1,0 +1,95 @@
+<%= form_with(url: bands_path, method: :get, local: true) do |form| %>
+  <!-- Search Field -->
+  <div class="form-group">
+    <%= form.label :search, "Search Band Name", class: "form-label" %>
+    <%= form.text_field :search, value: params[:search], placeholder: "Search by band name", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :genres, "Genres", class: "form-label" %>
+    <%= form.select :genre_ids, options_for_select(@genres.collect { |genre| [genre.name, genre.id] }, selected: params[:genre_ids]), { multiple: true }, { class: "form-select", id: "genre_select" } %>
+  </div>
+
+  <!-- Local Checkbox Filter -->
+  <div class="form-group">
+    <%= form.check_box :local, { id: "local-checkbox" }, "1", "0" %>
+    <%= form.label :local, "Show only local bands", class: "form-label" %>
+  </div>
+
+  <%= form.submit "Apply Filter", class: "btn btn-primary" %>
+<% end %>
+
+<!-- Display Selected Genres -->
+<% if params[:genre_ids].present? && @genres.any? %>
+  <div class="selected-genres">
+    <h3>Selected Genres:</h3>
+    <ul>
+      <% params[:genre_ids].each do |genre_id| %>
+        <% genre = @genres.find { |g| g.id.to_s == genre_id } %>
+        <% if genre %>
+          <li><%= genre.name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<!-- Bands Table -->
+<table class="bands-table">
+  <thead>
+    <tr>
+      <th>Band Name</th>
+      <th>Genre</th>
+      <th>Location</th>
+      <th>Social Links</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bands.each do |band| %>
+      <tr style="<%= 'background-color: #fff9c4;' if band.pending? %>">
+        <td>
+          <%= link_to band.band_name, band_path(band) %>
+        </td>
+        <td>
+          <% if band.genres.any? %>
+            <span style="font-size: 14px; color: black;">
+              <% band.genres.each_with_index do |genre, index| %>
+                <%= genre.name %>
+                <% if index < band.genres.length - 1 %>/ <% end %>
+              <% end %>
+            </span>
+          <% else %>
+            <span style="font-size: 14px; color: black;">None</span>
+          <% end %>
+        </td>
+        <td><%= band.band_location %></td>
+        <td>
+          <a href="<%= band.band_bandcamp_link %>" target="_blank">Bandcamp</a>
+          <a href="<%= band.band_instagram_link %>" target="_blank">Instagram</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "New band", new_band_path %>
+
+<!-- Pagination Controls -->
+<div class="pagination">
+  <%= paginate @bands %>
+</div>
+
+<!-- Include Slim Select JavaScript and Initialization -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.26.0/slimselect.min.css">
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Slim Select for Genres
+    new SlimSelect({
+      select: '#genre_select', // Make sure this matches the ID used for the genre select
+      closeOnSelect: false // Allows multiple selection
+    });
+  });
+</script>

@@ -1,0 +1,115 @@
+/* Bands Index Page */
+.bands-table {
+  width: calc(100% - 40px); /* Adjust width to account for margins */
+  margin: 20px auto; /* Center the table and add vertical spacing */
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.bands-table th,
+.bands-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.bands-table th {
+  background-color: #f2f2f2;  /* Light grey background for headers */
+  font-weight: bold;
+}
+
+.bands-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;  /* Light stripe for even rows */
+}
+
+.bands-table tbody tr:hover {
+  background-color: #f1f1f1;  /* Highlight row on hover */
+}
+
+.bands-table td a {
+  color: #0066cc;  /* Links in a blue color */
+  text-decoration: none;
+}
+
+.bands-table td a:hover {
+  text-decoration: underline;  /* Underline on hover */
+}
+
+/* Add some spacing between the table and the content above */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Container for each band */
+.band-container {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9; /* Light background for the box */
+  padding: 15px;
+  margin: 20px; /* Add space around each band container */
+  border: 1px solid #ddd; /* Border around each band box */
+  border-radius: 8px;
+  max-width: calc(100% - 40px); /* Ensure responsiveness with side margins */
+  box-sizing: border-box; /* Include padding and border in the element's width */
+}
+
+/* Band Image (forced square) */
+.band-image {
+  width: 100px; /* Fixed size for the square */
+  height: 100px;
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  border-radius: 8px; /* Optional rounded corners */
+  margin-right: 15px; /* Space between the image and the text */
+}
+
+/* Band Info (Text on the right) */
+.band-info {
+  flex: 1; /* Take up remaining space */
+}
+
+/* Band Name */
+.band-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Band Details (Description and links) */
+.band-details {
+  margin-bottom: 10px;
+}
+
+/* Band Description */
+.band-description {
+  font-size: 1em;
+  color: #555; /* Slightly lighter color for the description */
+}
+
+/* Profile links (bandcamp, instagram) */
+.band-links {
+  font-size: 0.9em;
+  color: #007bff; /* Link color */
+  text-decoration: none;
+}
+
+.band-links:hover {
+  text-decoration: underline;
+}
+
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+.btn-approve {
+  background-color: green;
+  color: white;
+}
+
+.btn-delete {
+  background-color: red;
+  color: white;
+}
+

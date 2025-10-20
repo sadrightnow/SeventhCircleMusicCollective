@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag("post")%>
+
+<% content_for :title, "Post" %>
+<div class="container">
+  <div class="main-header">
+    <img src="<%= asset_path('showspace.jpg') %>" alt="Top Image" class="top-page-image">
+    <h1>upcoming events</h1>
+  </div>
+</div>
+
+  <div id="posts" class="posts-grid">
+    
+
+    <% @posts.each do |post| %>
+
+      <%= render post %>
+
+
+
+  <% end %>
+</div>
+
+<div class="action-buttons">
+  <% if user_signed_in? %>
+    <%= link_to "New Show", new_post_path, class: "new-post-link" %>
+  <% else %>
+    <div class="spacer"></div> <!-- Empty spacer to reserve space -->
+  <% end %>
+  <%= link_to "Past Shows", past_posts_path, class: "past-shows-link" %>
+
+  <% if user_signed_in? %>
+    <%= button_to 'Import Google Calendar Events', import_google_calendar_posts_path, method: :post, class: 'import-button' %>
+  <% end %>
+
+</div>
+

@@ -1,0 +1,32 @@
+.date-overlay {
+  position: absolute;
+  top: 10px;  /* Adjust as needed */
+  left: 10px;  /* Adjust as needed */
+  padding: 5px;  /* Adjust for spacing */
+  background-color: #231F20;  /* Optional, for better contrast */
+  border-radius: 5px;  /* Optional, for rounded corners */
+  color: #FAF9F6;  /* Ensure visibility */
+  font-size: 12px;  /* Adjust the font size */
+  line-height: 1;  /* Adjust the line height to control spacing */
+}
+
+.date-overlay span {
+  display: block;
+  text-align: center;
+  margin: 0;  /* Ensure no margin */
+  padding: 0;  /* Ensure no padding */
+}
+
+.day {
+  font-weight: light;  /* You can emphasize the day if desired */
+}
+
+.date {
+  font-size: 25px;  /* Adjust the size for the day of the month */
+  font-weight: bolder;  /* You can emphasize the day if desired */
+
+}
+
+.month {
+  font-style: light;  /* Optional: styling the month differently */
+}

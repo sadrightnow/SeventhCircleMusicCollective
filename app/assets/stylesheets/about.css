@@ -1,0 +1,86 @@
+/* General Styling */
+.body-about-page {
+  line-height: 1.6;
+  color: #333333;
+  background-color: #black;
+  margin: 0;
+  padding: 0;
+}
+
+.about-page-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+/* Container */
+.about-page-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Headings */
+.about-page-title, .about-page-section-title {
+
+}
+
+.about-page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-page-section-title {
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+/* Paragraphs */
+.about-page-paragraph {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Highlighted Text */
+.about-page-highlight {
+  color: #black;
+  font-weight: bold;
+}
+
+/* List Styling */
+.about-page-list {
+  list-style-type: disc;
+  margin: 10px 0 20px 20px;
+  padding: 0;
+}
+
+.about-page-list-item {
+  margin-bottom: 10px;
+}
+
+/* Link Styling */
+.about-page-link {
+  color: #457b9d;
+  text-decoration: none;
+}
+
+.about-page-link:hover {
+  text-decoration: underline;
+}
+
+/* Map Container */
+.about-page-map {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Strong Styling */
+.about-page-paragraph strong {
+  font-weight: bold;
+  color: #333;
+}
+

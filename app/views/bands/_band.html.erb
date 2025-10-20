@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag "band_show", media: "all" %>
+
+<div class="band-show-container">
+  <!-- Band Image -->
+  <div class="band-image">
+    <% if band.profile_picture.attached? %>
+      <%= image_tag band.profile_picture, class: "profile-image" %>
+    <% else %>
+      <div class="no-image">No Image Available</div>
+    <% end %>
+  </div>
+
+  <!-- Band Info -->
+  <div class="band-info">
+    <!-- Band Name -->
+    <h1 class="band-name"><%= band.band_name %></h1>
+
+    <!-- Band Genre -->
+    <p><strong>Genres:</strong>
+      <% if band.genres.any? %>
+        <span style="font-size: 14px; color: black;">
+          <% band.genres.each_with_index do |genre, index| %>
+            <%= genre.name %>
+            <% if index < band.genres.length - 1 %>/ <% end %>
+          <% end %>
+        </span>
+      <% else %>
+        <span style="font-size: 14px; color: black;">None</span>
+      <% end %>
+    </p>
+
+    <!-- Band Description -->
+    <p><strong>Description:</strong> <%= band.band_description %></p>
+
+    <!-- Band Social Links -->
+    <p><strong>Music:</strong> <%= link_to band.band_bandcamp_link, band.band_bandcamp_link, target: "_blank" %></p>
+    <p><strong>Instagram:</strong> <%= link_to band.band_instagram_link, band.band_instagram_link, target: "_blank" %></p>
+
+    <!-- Band Email and Location -->
+    <p><strong>Email:</strong> <%= band.band_email %></p>
+    <p><strong>Location:</strong> <%= band.band_location %></p>
+  </div>
+
+  <!-- Edit Link for Band (Only visible if the user is logged in) -->
+  <% if user_signed_in? %>
+    <%= link_to 'Edit Band', edit_band_path(band), class: 'edit-band-link' %>
+  <% end %>
+</div>
+
+<!-- Approve and Destroy Buttons -->
+<div class="band-actions">
+  <% if band.pending? && user_signed_in? %>
+    <%= link_to 'Approve', approve_band_path(band), method: :patch, class: 'btn btn-success' %>
+  <% elsif user_signed_in? %>
+    <span>Approved</span>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= button_to "Destroy this band", band_path(band), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+  <% end %>
+</div>
+
+
