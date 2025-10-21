@@ -2,6 +2,7 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
+=begin
 begin
   user = User.find_or_create_by(email: 'froelichperry1@gmail.com') do |u|
     u.password = 'default_password'
@@ -20,7 +21,9 @@ begin
 rescue => e
   puts "An error occurred: #{e.message}"
 end
+=end
 
+=begin
 # Seed genres
 puts "Seeding genres..."
 file_path_genres = Rails.root.join('config', 'genres.json')
@@ -30,6 +33,7 @@ genres_data.each do |genre_name|
   Genre.find_or_create_by(name: genre_name)
 end
 puts "Genres seeding complete!"
+=end
 
 # Seed events
 puts "Seeding events..."
@@ -54,4 +58,3 @@ events_data.each_with_index do |event_data, index|
   end
 end
 puts "Events seeding complete!"
-
