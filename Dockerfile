@@ -1,8 +1,10 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.3.5
+# Gemfile
 FROM ruby:3.4.7-slim AS base
+
+
 
 LABEL fly_launch_runtime="rails"
 
@@ -25,7 +27,19 @@ FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      curl \
+      libpq-dev \
+      libyaml-dev \
+      zlib1g-dev \
+      libssl-dev \
+      libffi-dev \
+      git \
+      python-is-python3 \
+      pkg-config \
+      node-gyp
+
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=20.18.0
@@ -57,6 +71,18 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
+
+# Install packages needed to build gems and node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      curl \
+      libpq-dev \
+      libyaml-dev \
+      node-gyp \
+      pkg-config \
+      python-is-python3
+
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \

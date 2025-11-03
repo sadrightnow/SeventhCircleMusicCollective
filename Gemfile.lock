@@ -403,7 +403,8 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   dockerfile-rails (>= 1.6)
-  google-api-client
+  google-api-client (~> 0.53.0)
+  google-apis-discovery_v1 (~> 0.19.0)
   googleauth (~> 1.2)
   hotwire-rails
   importmap-rails

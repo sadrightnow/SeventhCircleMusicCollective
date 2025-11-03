@@ -1,24 +1,20 @@
 import csv
 import json
 
-# Load the CSV file
-csv_file_path = 'events.csv'
-json_file_path = 'events.json'
+csv_file_path = 'update.csv'
+json_file_path = 'update.json'
 
 data = []
 
-# Read the CSV and convert to a list of dictionaries
-with open(csv_file_path, mode='r') as csv_file:
-    csv_reader = csv.DictReader(csv_file)
+with open(csv_file_path, mode='r', encoding='utf-8-sig') as csv_file:
+    csv_reader = csv.DictReader(csv_file, fieldnames=['event_date', 'event_name'])
     for row in csv_reader:
-        # Append each row as a dictionary to the list
         data.append({
-            "event_date": row['event_date'],
-            "event_name": row['event_name']
+            "event_date": row['event_date'].strip(),
+            "event_name": row['event_name'].strip()
         })
 
-# Write the data to a JSON file
-with open(json_file_path, mode='w') as json_file:
-    json.dump(data, json_file, indent=2)
+with open(json_file_path, mode='w', encoding='utf-8') as json_file:
+    json.dump(data, json_file, indent=2, ensure_ascii=False)
 
-print(f"Data successfully converted to {json_file_path}")
+print(f"✅ Data successfully converted to {json_file_path}")

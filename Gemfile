@@ -24,9 +24,11 @@ gem "hotwire-rails"
 
 gem 'kaminari'
 
-#google
-gem 'google-api-client', require: 'google/apis/calendar_v3'
+# Google APIs
+gem 'google-api-client', '~> 0.53.0', require: 'google/apis/calendar_v3'
 gem 'googleauth', '~> 1.2'
+gem 'google-apis-discovery_v1', '~> 0.19.0', require: false
+
 
 
 
@@ -76,3 +78,5 @@ gem "dockerfile-rails", ">= 1.6", group: :development
 gem "pg", "~> 1.5", group: :production
 
 gem "aws-sdk-s3", "~> 1.170", require: false
+
+
